@@ -1,0 +1,2 @@
+source /home/gokul/Documents/ESP32/ADCData/AdcEg/build/gdbinit/symbols
+source /home/gokul/Documents/ESP32/ADCData/AdcEg/build/gdbinit/connect

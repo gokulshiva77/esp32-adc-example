@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/CMakeFiles/bootloader
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/CMakeFiles/bootloader.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/CMakeFiles/bootloader-complete.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/gokul/Documents/ESP32/ADCData/AdcEg/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
