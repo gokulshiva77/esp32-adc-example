@@ -1,7 +1,7 @@
 #include "adc_wrapper.h"
 #include "esp_log.h"
 
-static const char *TAG = "ADC_WRAPPER";
+#define TAG "ADC_WRAPPER"
 
 #define MAX_ADC_UNITS 2
 #define MAX_ADC_CHANNELS 10
@@ -104,11 +104,11 @@ int validate_adc_channel(adc_unit_t unit, adc_channel_t channel)
 {
     int unit_idx = unit;
     if (unit_idx < 0 || unit_idx >= MAX_ADC_UNITS) {
-        ESP_LOGE(TAG, "Invalid ADC unit %d", unit);
+        ESP_LOGE(TAG, "%s Invalid ADC unit %d", __func__, unit);
         return INVALID_VALUE;
     }
     if (channel < 0 || channel >= MAX_ADC_CHANNELS) {
-        ESP_LOGE(TAG, "Invalid ADC channel %d", channel);
+        ESP_LOGE(TAG, "%s Invalid ADC channel %d", __func__, channel);
         return INVALID_VALUE;
     }
     return VALID;
