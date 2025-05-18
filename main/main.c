@@ -24,6 +24,9 @@
 #define GPIO_OUTPUT_IO    2   // GPIO 2
 #define GPIO_OUTPUT_PIN_SEL  (1ULL<<GPIO_OUTPUT_IO)
 
+#define NVS_ADC_NAMESPACE "adc_ns"
+#define NVS_ADC_KEY "adc_val"
+
 void adc_task(void *pvParameter)
 {
     adc_unit_t unit = ADC_UNIT_1;
@@ -38,7 +41,7 @@ void adc_task(void *pvParameter)
             ESP_LOGI(TAG, "%s ADC Unit - %d, Channel [%d] : %d", __func__, unit, channel, value);
             
             // Write ADC value to storage handler (queue-based)
-            esp_err_t err = storage_handler_write("adc_ns", "adc_val", value);
+            esp_err_t err = storage_handler_write(NVS_ADC_NAMESPACE, NVS_ADC_KEY, value);
             if (err == ESP_OK) {
                 ESP_LOGI(TAG, "%s Stored ADC value %d in NVS", __func__, value);
             } else {
@@ -47,7 +50,7 @@ void adc_task(void *pvParameter)
 
             // Read back the value from storage handler
             int32_t read_value = 0;
-            err = storage_handler_read("adc_ns", "adc_val", &read_value);
+            err = storage_handler_read(NVS_ADC_NAMESPACE, NVS_ADC_KEY, &read_value);
             if (err == ESP_OK) {
                 ESP_LOGI(TAG, "%s Read ADC value from NVS: %ld", __func__, read_value);
             } else {
