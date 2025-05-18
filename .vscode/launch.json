@@ -2,14 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "gdbtarget",
-      "request": "attach",
-      "name": "Eclipse CDT GDB Adapter"
-    },
-    {
       "type": "espidf",
-      "name": "Launch",
-      "request": "launch"
+      "request": "launch",
+      "name": "ESP-IDF OpenOCD Debug",
+      "target": "esp32",
+      "gdb": "${command:espIdf.getXtensaGdb}",
+      "gdbinit": "${workspaceFolder}/build/gdbinit",
+      "openOcdConfig": [
+        "interface/ftdi/esp32_devkitj_v1.cfg",
+        "target/esp32.cfg"
+      ],
+      "openOcdScripts": "${command:espIdf.getOpenOcdScripts}"
     }
   ]
 }
