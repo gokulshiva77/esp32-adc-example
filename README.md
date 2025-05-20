@@ -80,3 +80,43 @@ For more details, see the comments in `main/storage_handler.c` and ESP-IDF docum
        sudo udevadm trigger
        ```
      - Unplug and replug your debugger.
+
+
+### Install ESP IDF and Dependancies
+
+#### Install Dependancies
+``` bash 
+sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+```
+---
+#### Clone ESP IDF
+``` bash
+mkdir -p ~/esp
+cd ~/esp
+git clone -b v5.4.1 --recursive https://github.com/espressif/esp-idf.git
+```
+---
+
+### Setup Tools
+
+``` bash
+cd ~/esp/esp-idf
+./install.sh esp32
+```
+
+#### Build
+
+``` bash
+cd <Worrking Directory>
+source . $HOME/esp/esp-idf/export.sh
+idf.py build
+```
+
+#### Flash
+
+``` bash
+idf.py -p PORT flash
+```
+
+#### Reference
+https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html
