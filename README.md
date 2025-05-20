@@ -108,7 +108,7 @@ cd ~/esp/esp-idf
 
 ``` bash
 cd <Worrking Directory>
-source . $HOME/esp/esp-idf/export.sh
+source $HOME/esp/esp-idf/export.sh
 idf.py build
 ```
 
