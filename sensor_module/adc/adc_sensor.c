@@ -1,7 +1,7 @@
-#include "adc_wrapper.h"
+#include "adc_sensor.h"
 #include "esp_log.h"
 
-#define TAG "ADC_WRAPPER"
+#define TAG "ADC_SENSOR"
 
 #define MAX_ADC_UNITS 2
 #define MAX_ADC_CHANNELS 10
@@ -115,4 +115,14 @@ int validate_adc_channel(adc_unit_t unit, adc_channel_t channel)
         return INVALID_VALUE;
     }
     return VALID;
+}
+
+int get_adc_sensor_data(void)
+{
+    int adc_value = INVALID_VALUE;
+    adc_value = adc_read_channel(ADC_UNIT_1, ADC_CHANNEL_0);
+    if (adc_value == INVALID_VALUE) {
+        ESP_LOGE(TAG, "%s Failed to read ADC sensor data", __func__);
+    }    
+    return adc_value;
 }

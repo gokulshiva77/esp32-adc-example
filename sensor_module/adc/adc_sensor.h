@@ -17,4 +17,6 @@ void adc_deinit(adc_unit_t unit, adc_channel_t channel);
 
 int validate_adc_channel(adc_unit_t unit, adc_channel_t channel);
 
+int get_adc_sensor_data(void);
+
 #endif // __ADC_WRAPPER_H__

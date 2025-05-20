@@ -56,6 +56,14 @@ For more details, see the comments in `main/storage_handler.c` and ESP-IDF docum
 
 ### Issues Faced and Solutions in Linux
 
+### Configuration Issues
+  ```/home/$USER/.espressif/tools/openocd-esp32/v0.10.0-esp32-20190708/openocd-esp32/share/openocd/contrib/60-openocd.rules doesn't exists.```
+
+  ```bash
+  sudo mkdir -p /etc/udev/rules.d/
+  sudo wget -O /etc/udev/rules.d/60-openocd.rules https://raw.githubusercontent.com/espressif/openocd-esp32/master/contrib/60-openocd.rules
+  sudo udevadm control --reload-rules
+  ```
 #### Flash Issues
 - Run: sudo usermod -aG dialout $USER
 - Run: `lsusb` to see if your FTDI device appears.
