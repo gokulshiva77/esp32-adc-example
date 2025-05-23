@@ -2,6 +2,20 @@
 
 This project demonstrates how to safely store and retrieve integer values (such as ADC readings) in non-volatile storage (NVS) on the ESP32 using FreeRTOS tasks and queues for thread safety.
 
+### Hardware Pin Connections
+| Peripheral    | Channel          | Pins |
+| ------------- | ---------------- | ---- |
+| ADC           | ADC_CHANNEL_6    |  34  |
+
+#### SPI Channel 3
+|  Function     | Pin  |
+| ------------- | ---- |
+| CS            | 5    |
+| SCLK          | 18   |
+| MOSI          | 23   |
+| MISO          | 19   |
+
+
 ### Project Structure
 
 - **main/**
@@ -128,3 +142,5 @@ idf.py -p PORT flash
 
 #### Reference
 https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html
+
+https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf

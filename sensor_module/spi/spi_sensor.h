@@ -1,7 +1,7 @@
 #ifndef __SPI_SENSOR_H__
 #define __SPI_SENSOR_H__
 
-#include <esp_err.h>
+#include "esp_err.h"
 
 // Initialize SPI sensor (stub)
 void spi_sensor_init(void);

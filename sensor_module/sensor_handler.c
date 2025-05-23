@@ -7,6 +7,7 @@
 #include <esp_err.h>
 
 #include "adc_sensor.h"
+#include "i2c_sensor.h"
 
 #define TAG "SENSOR_HANDLER"
 #define MAX_SENSORS 10  // Maximum number of sensors we can register
@@ -37,7 +38,7 @@ static void sensor_task(void *pvParameters)
 void sensor_start_task(void)
 {
     if (sensor_task_handle == NULL) {
-        xTaskCreate(sensor_task, "sensor_task", 2048, NULL, 5, &sensor_task_handle);
+        xTaskCreate(sensor_task, "sensor_task", 4096, NULL, 5, &sensor_task_handle);
     }
 }
 
@@ -58,13 +59,27 @@ void sensor_init(void)
     
     // Init ADC Sensor
     adc_unit_t unit = ADC_UNIT_1;
-    adc_channel_t channel = ADC_CHANNEL_0; // GPIO 36
+    adc_channel_t channel = ADC_CHANNEL_6; // GPIO 34
     adc_init(unit, channel);
     ESP_LOGI(TAG, "ADC Sensor initialized on Unit %d, Channel %d", unit, channel);
     // Register the ADC sensor read function
     sensor_register_func(&get_adc_sensor_data);
     ESP_LOGI(TAG, "ADC Sensor read function registered");
 
+    // Init I2C Sensor
+    i2c_port_num_t i2c_port = I2C_NUM_0;
+    gpio_num_t sda_pin = GPIO_NUM_21;
+    gpio_num_t scl_pin = GPIO_NUM_22;
+    uint16_t device_address = 0x68; // Example I2C address
+    i2c_sensor_init(i2c_port, sda_pin, scl_pin, device_address);
+    ESP_LOGI(TAG, "I2C Sensor initialized on Port %d, SDA %d, SCL %d", i2c_port, sda_pin, scl_pin);
+    // Power ON the sensor
+    uint8_t power_on_data[2] = {MPU6050_PWR_MGMT_1, 0x00};
+    i2c_sensor_write(power_on_data, sizeof(power_on_data));
+    
+    // Register the I2C sensor read function
+    sensor_register_func(&get_i2c_sensor_data);
+    ESP_LOGI(TAG, "I2C Sensor read function registered");
     // Start the sensor task
     sensor_start_task();
     ESP_LOGI(TAG, "Sensor task started");

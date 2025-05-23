@@ -4,7 +4,8 @@
 
 #ifndef SPI_HOST
 #define SPI_HOST    SPI2_HOST // Use SPI2_HOST for ESP-IDF v5+
-#endif
+#endif // SPI_HOST
+
 #define PIN_NUM_MISO 19
 #define PIN_NUM_MOSI 23
 #define PIN_NUM_CLK  18
